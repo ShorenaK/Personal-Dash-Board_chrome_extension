@@ -5,8 +5,9 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 .then((data)=>{
     console.log(data.urls.regular)
     document.body.style.backgroundImage = `url(${data.urls.regular})`
+    document.getElementById("author").innerHTML = `By: ${data.user.name}`
 })
-
+ 
 
 
 

@@ -8,10 +8,11 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
     document.getElementById("author").textContent = `By: ${data.user.name}`
 })
 .catch(err => {
-
+   document.body.style.background = "red"
     console.log("Somthing went wrong")
      // This is where I can handle the error
         // Choose to use a default backgronud image
+        // Report the error to some kind of service
 })
  
 

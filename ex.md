@@ -17,4 +17,4 @@ The task we watned to perfom finished successfully.
 .then() when is set to resulve state .then will run after fetching
 
 6. Rejection:
-
+a promise becomes rejected if an error thrown inside any of the .then() block or if a prgoramemer manuallu calls Promise.reject()

@@ -36,7 +36,6 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
          <p>👇: $${data.market_data.low_24h.usd}</p>
         </div>
       `
-    console.log(data)
 })
 .catch(err => console.error(err))
 
@@ -50,28 +49,22 @@ function getCurrentime(){
 setInterval(getCurrentime, 1000)
 
 navigator.geolocation.getCurrentPosition(position => {
-fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
-.then(res => {
-    if(!res.ok){
-        throw Error("Weather data not available")
-    }
-    return res.json()
-})
- .then((data)=>{
-    console.log(data)
- })  
-  .catch(err => console.error(err))
-  });
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Weather data not available")
+            }
+            return res.json()
+        })
+        .then(data => {
+            console.log(data)
+            const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+            document.getElementById("weather").innerHTML = `
+                <img src=${iconUrl} />
+                <p class="weather-temp"> ${Math.round(data.main.temp)}º </p>
+                <p class="weather-city"> ${data.name}</p>
 
-
-
-//         .then(data => {
-//             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-//             document.getElementById("weather").innerHTML = `
-//                 <img src=${iconUrl} />
-//                 <p class="weather-temp">${Math.round(data.main.temp)}º</p>
-//                 <p class="weather-city">${data.name}</p>
-//             `
-//         })
-//         .catch(err => console.error(err))
-// });
+            `
+        })
+        .catch(err => console.error(err))
+});

@@ -16,11 +16,23 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 })
  
 fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
-.then((res)=> res.json())
+.then((res)=> 
+    // console.log(res.status)(res.ok) is boolean // res.ok 400 over will be false // network error
+    // you will receive the status / if is Stats 500 levels is api down
+    // if(!res.ok){
+    //     throw Error ("Something went wrong")
+    // }
+    // return res.json()
+    res.json())
 .then((data)=>{
-console.log(data)
+    // throw Error -- manualy throws an error 
+      document.getElementById("crypto-top").innerHTML = 
+      `<img src="${data.image.small}"/> 
+        <p> ${data.name}</p>
+      `
+    console.log(data)
 })
-.catch(err => console.log('you have an error'))
+.catch(err => console.error(err))
 
 
 

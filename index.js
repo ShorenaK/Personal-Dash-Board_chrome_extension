@@ -15,7 +15,12 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
         // Report the error to some kind of service
 })
  
-
+fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
+.then((res)=> res.json())
+.then((data)=>{
+console.log(data)
+})
+.catch(err => console.log('you have an error'))
 
 
 

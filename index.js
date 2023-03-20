@@ -40,12 +40,15 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 })
 .catch(err => console.error(err))
 
+// get current formatted time in javascript
+function getCurrentime(){
+    const date = new Date()
+    document.getElementById("time").textContent = 
+    date.toLocaleTimeString("en-us",{timeStyle: "short"} )
+    
+}
 
-
-document.getElementById("time").innerHTML = new Date().toLocaleTimeString()
-
-
-
+setInterval(getCurrentime, 1000)
 
 
 
